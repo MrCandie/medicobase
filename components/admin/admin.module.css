@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
   background: #ccc;
+  color: purple;
   /* display: flex;
   align-items: start;
   justify-content: flex-start;
@@ -63,7 +64,7 @@
 
 @media (max-width: 850px) {
   .admin {
-    width: 90%;
+    width: 100%;
     margin: auto;
     align-items: start;
     gap: 0;
