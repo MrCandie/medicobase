@@ -11,7 +11,7 @@
 .search input {
   padding: 1rem 0;
   border: none;
-
+  text-align: center;
   width: 350px;
   outline: none;
   font-size: 1rem;
@@ -93,6 +93,15 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+}
+.section .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 @media (max-width: 850px) {

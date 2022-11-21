@@ -10,14 +10,20 @@
   font-weight: 500;
 }
 .ward .stat {
+  width: 80%;
+  margin: 2rem auto;
   display: flex;
+  gap: 2rem;
+  text-align: center;
+  flex-wrap: wrap;
 }
-.ward .stat button,
+
 .ward .stat a {
+  width: 20%;
   margin: 1rem auto;
   border: none;
   background: purple;
-  padding: 1rem 1.5rem;
+  padding: 1rem 0;
   color: #fff;
   font-weight: bold;
   border-radius: 0.3rem;
@@ -41,6 +47,9 @@
   border: none;
   outline: none;
   width: 90%;
+  background: #fff;
+  text-align: center;
+  font-size: 1rem;
 }
 .search form button {
   padding: 0.7rem 2rem;
@@ -51,6 +60,7 @@
   font-weight: bold;
   right: 0;
   transition: opacity 0.3s ease-in;
+  font-size: 1rem;
 }
 .search form button span {
   color: #fff;
@@ -122,9 +132,17 @@
 .request hr {
   color: red;
 }
+.ward .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+}
 @media (max-width: 850px) {
   .ward .stat {
-    flex-direction: column;
     /* justify-content: flex-start;
     align-items: start;
     margin: 0; */
@@ -145,5 +163,12 @@
   }
   .request {
     width: 90%;
+  }
+  .ward .stat {
+    width: 100%;
+    gap: 0;
+  }
+  .ward .stat a {
+    width: 40%;
   }
 }

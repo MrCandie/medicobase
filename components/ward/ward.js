@@ -5,8 +5,10 @@ import Head from "next/head";
 import Spinner from "../spinner/spinner";
 import { getPatientData, getSearchedPatient } from "../../db-util";
 import PatientDetails from "../patient/PatientDetails";
+import { useRouter } from "next/router";
 
 export default function Ward() {
+  const router = useRouter();
   const [wardStat, setWardStat] = useState([]);
   const [showWardStat, setShowWardStat] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -46,17 +48,27 @@ export default function Ward() {
   return (
     <Fragment>
       <Head>
-        <title></title>
+        <title>Ward</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
         />
       </Head>
       <section className={classes.ward}>
+        <div className={classes.arrow}>
+          <span
+            onClick={() => {
+              router.replace("/nurses");
+            }}
+            class="material-symbols-outlined"
+          >
+            arrow_back
+          </span>
+        </div>
         <div className={classes.stat}>
-          <button onClick={showStatsHandler}>
+          <Link href="" onClick={showStatsHandler}>
             {showWardStat ? "Hide Ward Statiatics" : "Show Ward Stats"}
-          </button>
+          </Link>
           <Link href="/patient">Admit Patient</Link>
           <Link href="vital">Vital Signs</Link>
           <Link href="/medication">Medications</Link>

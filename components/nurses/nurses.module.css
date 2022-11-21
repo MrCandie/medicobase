@@ -10,5 +10,21 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 1rem;
+  gap: 2rem;
+  width: 50%;
+  margin: 2rem auto;
+}
+/* .action button {
+  width: 50%;
+  font-size: 1rem;
+} */
+.action a {
+  width: 50%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+@media (max-width: 850px) {
+  .action {
+    width: 100%;
+  }
 }

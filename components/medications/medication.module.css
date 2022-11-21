@@ -1,11 +1,20 @@
 .section {
-  width: 100%;
-  margin: 1rem;
+  width: 80%;
+  margin: 1rem auto;
 }
 .section h1 {
   font-size: 1.5rem;
   color: purple;
   text-align: center;
+}
+.section .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 .container {
   width: 30%;
@@ -56,6 +65,8 @@
 .actions {
   display: flex;
   width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 .btn:active {
   transform: scale(0.5);
@@ -70,9 +81,11 @@
   outline: none;
   background: #ccc;
   font-size: 1rem;
+  text-align: center;
 }
 .form button {
-  padding: 1rem;
+  padding: 1rem 0;
+  width: 100%;
   border: none;
   background: purple;
   color: #fff;
@@ -82,16 +95,18 @@
 }
 
 @media (max-width: 850px) {
+  .section {
+    width: 100%;
+  }
   .container {
     width: 90%;
     margin: 2rem auto;
   }
   .btn {
-    width: 32%;
+    width: 40%;
     margin: 0.5rem auto;
   }
   .actions {
-    flex-direction: column;
   }
   .form input {
     width: 100%;

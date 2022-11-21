@@ -1,7 +1,10 @@
+import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { Fragment, useRef, useState } from "react";
 import classes from "./patient.module.css";
 
 export default function Patients() {
+  const router = useRouter();
   const [patientHistory, setPatientHistory] = useState(true);
   const [patientAssessment, setPatientAssessment] = useState(false);
   const [patientVitals, setPatientVitals] = useState(false);
@@ -83,30 +86,6 @@ export default function Patients() {
       return;
     }
 
-    // const patientData = {
-    //   _id: "p1",
-    //   name: enteredName,
-    //   age: enteredAge,
-    //   gender: enteredGender,
-    //   maritalStatus: enteredMaritalStatus,
-    //   address: enteredAddress,
-    //   nextOfKin: enteredNextOfKin,
-    //   dateOfAdmission: enteredDateOfAdmission,
-    //   occupation: enteredOccupation,
-    //   familyHistory: enteredFamilyHistory,
-    //   childhoodHistory: enteredChildhoodHistory,
-    //   presentHistory: enteredPresentHistory,
-    //   pastHistory: enteredPastHistory,
-    //   nursingHistory: enteredNursingHistory,
-    //   observation: enteredObs,
-    //   complaint: enteredComplaint,
-    //   temperature: enteredTemperature,
-    //   pulse: enteredPulse,
-    //   respiration: enteredRespiration,
-    //   bloodPressure: enteredBp,
-    //   comment: enteredComment,
-    // };
-    // console.log(patientData);
     fetch("/api/patient", {
       method: "POST",
       body: JSON.stringify({
@@ -143,140 +122,154 @@ export default function Patients() {
   };
 
   return (
-    <section className={classes.container}>
-      <div className={classes.blur}></div>
-      <div className={classes.body}>
-        <h1 className={classes.h1}>Add a new patient to database</h1>
-        <hr />
+    <Fragment>
+      <Head>
+        <title>Admission</title>
+      </Head>
+      <section className={classes.container}>
+        <div className={classes.arrow}>
+          <span
+            onClick={() => {
+              router.replace("/nurses");
+            }}
+            class="material-symbols-outlined"
+          >
+            arrow_back
+          </span>
+        </div>
+        <div className={classes.body}>
+          <h1 className={classes.h1}>Add a new patient to database</h1>
+          <hr />
 
-        <form onSubmit={submitHandler}>
-          <Fragment>
-            <div className={classes.category}>
-              <h1>Enter patient biodata</h1>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="name">Patient Name</label>
-              <input ref={nameRef} id="name" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="age">Patient Age</label>
-              <input ref={ageRef} id="age" type="date" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="sec">Gender</label>
-              <select ref={genderRef} htmlFor="sex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="weight">Weight in kg</label>
-              <input ref={nextOfKinRef} id="weight" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="height">Height</label>
-              <input ref={nextOfKinRef} id="height" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="marital">Marital Status</label>
-              <select ref={maritalRef} htmlFor="marital">
-                <option value="single">Single</option>
-                <option value="married">married</option>
-                <option value="divorced">divorced</option>
-                <option value="widowed">widowed</option>
-              </select>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="job">Patient Occupation</label>
-              <input ref={occupationRef} id="job" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="kin">Next Of Kin</label>
-              <input ref={nextOfKinRef} id="kin" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="address">Patient Residential Address</label>
-              <input ref={addressRef} id="address" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="date">Date of Admission</label>
-              <input ref={dateOfAdmissionRef} id="date" type="text" />
-            </div>
-          </Fragment>
-          <Fragment>
-            <div className={classes.category}>
-              <h1>Enter patient history</h1>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="nursing">Nursing History</label>
-              <textarea ref={nursingHistoryRef} rows="5" id="nursing" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="present">History Of Present Illness</label>
-              <textarea ref={presentHistoryRef} rows="5" id="present" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="past">Past Medical History</label>
-              <textarea ref={pastHistoryRef} rows="5" id="past" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="childhood">Childhood Illness</label>
-              <textarea ref={childhoodHistoryRef} rows="3" id="childhood" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="family">Family History</label>
-              <textarea ref={familyHistoryRef} rows="3" id="family" />
-            </div>
-          </Fragment>
+          <form onSubmit={submitHandler}>
+            <Fragment>
+              <div className={classes.category}>
+                <h1>Enter patient biodata</h1>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="name">Patient Name</label>
+                <input ref={nameRef} id="name" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="age">Patient Age</label>
+                <input ref={ageRef} id="age" type="date" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="sec">Gender</label>
+                <select ref={genderRef} htmlFor="sex">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="weight">Weight in kg</label>
+                <input ref={nextOfKinRef} id="weight" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="height">Height</label>
+                <input ref={nextOfKinRef} id="height" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="marital">Marital Status</label>
+                <select ref={maritalRef} htmlFor="marital">
+                  <option value="single">Single</option>
+                  <option value="married">married</option>
+                  <option value="divorced">divorced</option>
+                  <option value="widowed">widowed</option>
+                </select>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="job">Patient Occupation</label>
+                <input ref={occupationRef} id="job" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="kin">Next Of Kin</label>
+                <input ref={nextOfKinRef} id="kin" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="address">Patient Residential Address</label>
+                <input ref={addressRef} id="address" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="date">Date of Admission</label>
+                <input ref={dateOfAdmissionRef} id="date" type="text" />
+              </div>
+            </Fragment>
+            <Fragment>
+              <div className={classes.category}>
+                <h1>Enter patient history</h1>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="nursing">Nursing History</label>
+                <textarea ref={nursingHistoryRef} rows="5" id="nursing" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="present">History Of Present Illness</label>
+                <textarea ref={presentHistoryRef} rows="5" id="present" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="past">Past Medical History</label>
+                <textarea ref={pastHistoryRef} rows="5" id="past" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="childhood">Childhood Illness</label>
+                <textarea ref={childhoodHistoryRef} rows="3" id="childhood" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="family">Family History</label>
+                <textarea ref={familyHistoryRef} rows="3" id="family" />
+              </div>
+            </Fragment>
 
-          <Fragment>
-            <div className={classes.category}>
-              <h1>Record Patient Vital Signs</h1>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="temp">Temperature in Celsius</label>
-              <input ref={temperatureRef} id="temp" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="bp">Blood Pressure</label>
-              <input ref={bpRef} id="bp" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="pulse">Pulse</label>
-              <input ref={pulseRef} id="pulse" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="respiration">Respiration</label>
-              <input ref={respirationRef} id="respiration" type="text" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="comment">Add Comments</label>
-              <textarea
-                placeholder="Any abnormalities?"
-                rows="5"
-                id="comment"
-                type="text"
-                ref={commentsRef}
-              />
-            </div>
-          </Fragment>
+            <Fragment>
+              <div className={classes.category}>
+                <h1>Record Patient Vital Signs</h1>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="temp">Temperature in Celsius</label>
+                <input ref={temperatureRef} id="temp" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="bp">Blood Pressure</label>
+                <input ref={bpRef} id="bp" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="pulse">Pulse</label>
+                <input ref={pulseRef} id="pulse" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="respiration">Respiration</label>
+                <input ref={respirationRef} id="respiration" type="text" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="comment">Add Comments</label>
+                <textarea
+                  placeholder="Any abnormalities?"
+                  rows="5"
+                  id="comment"
+                  type="text"
+                  ref={commentsRef}
+                />
+              </div>
+            </Fragment>
 
-          <Fragment>
-            <div className={classes.category}>
-              <h1>Record Observations, complaints</h1>
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="obs">Enter Observation</label>
-              <textarea ref={observationRef} rows="4" id="obs" />
-            </div>
-            <div className={classes.patient}>
-              <label htmlFor="comp">Enter Patient Complaint</label>
-              <textarea ref={complaintRef} rows="4" id="comp" />
-            </div>
-          </Fragment>
-          <button className="btn">Register Patient</button>
-        </form>
-      </div>
-    </section>
+            <Fragment>
+              <div className={classes.category}>
+                <h1>Record Observations, complaints</h1>
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="obs">Enter Observation</label>
+                <textarea ref={observationRef} rows="4" id="obs" />
+              </div>
+              <div className={classes.patient}>
+                <label htmlFor="comp">Enter Patient Complaint</label>
+                <textarea ref={complaintRef} rows="4" id="comp" />
+              </div>
+            </Fragment>
+            <button className="btn">Register Patient</button>
+          </form>
+        </div>
+      </section>
+    </Fragment>
   );
 }

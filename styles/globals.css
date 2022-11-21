@@ -2,7 +2,7 @@
 
 html,
 body {
-  /* background: #ccc; */
+  background: #ccc;
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
@@ -39,6 +39,7 @@ h4 {
   background: purple;
   border-radius: 0.3rem;
   transition: 0.5s all ease-in;
+  cursor: pointer;
 }
 .btn:active {
   transform: scale(0.5);

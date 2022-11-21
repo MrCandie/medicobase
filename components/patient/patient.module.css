@@ -2,20 +2,8 @@
   width: 100%;
   position: relative;
   margin: 2rem auto;
-  /* height: 200vh; */
 }
-.blur {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100vh;
-  z-index: 1;
-}
+
 .body {
   position: absolute;
   z-index: 10;
@@ -52,17 +40,27 @@
 }
 .patient label {
   font-size: 1.1rem;
-  color: #fff;
+  color: #000;
   font-weight: bold;
   margin: 0.2rem 0;
+}
+.container .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 .patient input,
 .patient select {
   border: 1px solid purple;
   padding: 0.5rem 0;
   outline: none;
+  font-size: 1rem;
   border-radius: 0.3rem;
-  background: transparent;
+  background: #fff;
   transition: all 0.2s ease-in;
   font-size: 1rem;
 }
