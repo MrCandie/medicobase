@@ -1,0 +1,19 @@
+{
+  "name": "file-trackka",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "mongodb": "^4.12.0",
+    "next": "13.0.4",
+    "next-auth": "^4.17.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

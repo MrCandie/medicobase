@@ -1,0 +1,29 @@
+.spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 20;
+}
+.spinner i {
+  font-size: 3.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: purple;
+  font-weight: bold;
+  z-index: 10;
+  animation: rotate 1s ease-in infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

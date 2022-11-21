@@ -1,0 +1,129 @@
+.features {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  gap: 2rem;
+}
+.container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 0.2rem 0.3rem 0 #9f2b68;
+  border-radius: 0.3rem;
+}
+
+.image {
+  width: 50%;
+}
+.image img {
+  width: 100%;
+}
+.content {
+  width: 50%;
+}
+.content h1 {
+  width: 70%;
+  margin: 1rem 0;
+  text-transform: capitalize;
+  text-align: start;
+  font-size: 1.5rem;
+}
+.content p {
+  width: 60%;
+  font-size: 1rem;
+  text-align: start;
+  line-height: 1.7rem;
+}
+.content .link {
+  margin: 1rem 0;
+  font-weight: 500;
+  color: purple;
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.content .link a {
+  font-size: 1.2rem;
+}
+.content .link span {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+.content1 {
+  width: 50%;
+}
+
+.content1 h1 {
+  width: 70%;
+  margin: 1rem auto;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.content1 p {
+  width: 60%;
+  margin: 1rem auto;
+  font-size: 1rem;
+  text-align: start;
+  line-height: 1.7rem;
+}
+.content1 .link {
+  margin: 1rem auto;
+  font-weight: 500;
+  color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.content1 .link a {
+  font-size: 1.2rem;
+}
+.content1 .link span {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 850px) {
+  .features {
+    width: 90%;
+  }
+  .container {
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem auto;
+    box-shadow: 0 0.2rem 0.7rem 0 #9f2b68;
+    border-radius: 0.3rem;
+  }
+  .image {
+    width: 100%;
+  }
+  .content,
+  .content1 {
+    width: 100%;
+  }
+  .content h1,
+  .content1 h1 {
+    width: 90%;
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    text-align: center;
+  }
+  .content p,
+  .content1 p {
+    text-align: center;
+    margin: 1rem auto;
+    width: 100%;
+  }
+  .content .link,
+  .content1 .link {
+    display: flex;
+    justify-content: center;
+  }
+}

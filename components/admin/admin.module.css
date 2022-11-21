@@ -1,0 +1,70 @@
+.admin {
+  width: 100%;
+  /* display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  flex-direction: column; */
+  gap: 2rem;
+}
+.department {
+  display: block;
+  margin: auto;
+  margin: 2rem;
+}
+.department h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+.department a {
+  display: flex;
+  flex-direction: column;
+  color: purple;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  border: 1px solid purple;
+  padding: 0.3rem 0.1rem;
+  border-radius: 0.3rem;
+  width: 250px;
+}
+.nurses {
+  margin: 1rem;
+}
+.nurses h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.nurses .input {
+  display: flex;
+  flex-direction: column;
+}
+.nurses .input label {
+  font-size: 1.1rem;
+  color: purple;
+  margin: 0.3rem 0;
+  font-weight: bold;
+}
+.nurses .input input {
+  width: 200px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  outline: none;
+}
+.nurses form button {
+  padding: 0.5rem 1rem;
+  background: purple;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 850px) {
+  .admin {
+    width: 90%;
+    margin: auto;
+    align-items: start;
+    gap: 0;
+    justify-content: flex-start;
+  }
+}

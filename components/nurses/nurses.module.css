@@ -1,0 +1,14 @@
+.nurses {
+  margin: 0 2rem;
+  padding: 2rem 0;
+}
+.nurses h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}

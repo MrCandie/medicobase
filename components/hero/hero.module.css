@@ -1,0 +1,21 @@
+.section {
+  height: 100vh;
+  background: linear-gradient(
+      to top,
+      rgba(221, 160, 255, 0.4),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("/images/hospital.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.section h1 {
+  color: #fff;
+  font-size: 2rem;
+}
+.section a {
+}

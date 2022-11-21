@@ -1,0 +1,53 @@
+.container {
+  width: 30%;
+  border: 1px solid;
+  margin-top: 2rem;
+}
+.container h1 {
+  font-size: 1.2rem;
+  color: purple;
+  width: 80%;
+  text-align: center;
+  margin: 2rem auto;
+}
+.container form div {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.container form div label {
+  font-size: 1rem;
+  color: purple;
+  font-weight: bold;
+}
+.container form div input,
+.container form div textarea {
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid purple;
+  background: transparent;
+  outline: none;
+  transition: all 0.2s ease-in;
+}
+.container form div input:focus {
+  background: #eee;
+}
+.container form button {
+  padding: 1rem 1.5rem;
+  background: purple;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  display: block;
+  margin: 1rem auto;
+  transition: transform 0.2s ease-in;
+}
+.container form button:active {
+  transform: scale(0.5);
+}
+@media (max-width: 850px) {
+  .container {
+    width: 100%;
+  }
+}
