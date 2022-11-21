@@ -22,6 +22,7 @@ export default function Logins() {
       password: enteredPassword,
       redirect: false,
     });
+    console.log(result);
     setLoading(false);
     if (result.error === null) {
       router.replace("/admin");

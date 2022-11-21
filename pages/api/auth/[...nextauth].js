@@ -17,10 +17,7 @@ const authOptions = {
         const usersCollection = client.db().collection("organization data");
 
         const user = await usersCollection.find({ email: credentials.email });
-        // const isValid = await verifyPassword(
-        //   credentials.password,
-        //   user.password
-        // );
+
         if (!user) {
           client.close();
           throw new Error("user does not exist");
@@ -34,6 +31,7 @@ const authOptions = {
   pages: {
     signIn: "/login",
   },
+  secret: "a7c85d4237475c08c2829812539ac6ea",
 };
 
 export default NextAuth(authOptions);
