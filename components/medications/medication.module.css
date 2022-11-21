@@ -76,7 +76,7 @@
 }
 .form input {
   padding: 1rem 0;
-  width: 350px;
+  width: 100%;
   border: none;
   outline: none;
   background: #ccc;
