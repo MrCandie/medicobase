@@ -31,7 +31,6 @@ const authOptions = {
   pages: {
     signIn: "/login",
   },
-  secret: "a7c85d4237475c08c2829812539ac6ea",
 };
 
 export default NextAuth(authOptions);
