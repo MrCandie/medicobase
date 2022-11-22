@@ -1,8 +1,7 @@
 import { Fragment } from "react";
-import Header from "../components/header/header";
-import Hero from "../components/hero/hero";
-import Features from "../components/features/features";
-import Footer from "../components/footer/footer";
+import Header from "../components/homepage/header/header";
+import Hero from "../components/homepage/hero/hero";
+import Footer from "../components/homepage/footer/footer";
 
 export default function Home() {
   return (

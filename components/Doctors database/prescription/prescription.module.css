@@ -1,0 +1,44 @@
+.presc {
+  width: 30%;
+  margin: auto;
+  background: #fff;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.presc h1 {
+  font-size: 1.3rem;
+  text-align: center;
+  color: purple;
+}
+.prescribe {
+  margin: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.prescribe label {
+  font-size: 1rem;
+  color: purple;
+  font-weight: bold;
+}
+.prescribe input,
+.prescribe textarea {
+  padding: 0.7rem;
+  border: none;
+  font-size: 1rem;
+  border-bottom: 1px solid purple;
+  outline: none;
+  transition: all 0.2s ease-in;
+}
+.prescribe input:focus,
+.prescribe textarea:focus {
+  background: #ccc;
+}
+@media (max-width: 850px) {
+  .presc {
+    width: 90%;
+  }
+}

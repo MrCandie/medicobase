@@ -1,0 +1,43 @@
+.section {
+  width: 100%;
+  margin: 2rem 0;
+}
+.section ul {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.section ul li {
+  width: 25%;
+  background: #fff;
+  padding: 1rem;
+}
+.section ul li p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: purple;
+  font-weight: bold;
+}
+.section ul li p span {
+  width: 55%;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+@media (max-width: 850px) {
+  .section ul {
+    width: 100%;
+    flex-direction: column;
+  }
+  .section ul li {
+    width: 90%;
+  }
+}

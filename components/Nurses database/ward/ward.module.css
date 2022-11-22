@@ -1,0 +1,178 @@
+.ward {
+  width: 100%;
+  /* margin: 1rem; */
+}
+.ward h1 {
+  font-size: 1rem;
+  color: purple;
+  text-align: start;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.ward .stat {
+  width: 80%;
+  margin: 2rem auto;
+  display: flex;
+  gap: 2rem;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.ward .stat a {
+  width: 20%;
+  margin: 1rem auto;
+  border: none;
+  background: purple;
+  padding: 1rem 0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  transition: transform 0.3s ease-in;
+}
+.ward .stat button:active {
+  transform: scale(0.5);
+}
+.search {
+  width: 50%;
+  display: flex;
+  margin: 1rem auto;
+  position: relative;
+}
+.search form {
+  width: 100%;
+}
+.search form input {
+  padding: 0.7rem 0;
+  border: none;
+  outline: none;
+  width: 90%;
+  background: #fff;
+  text-align: center;
+  font-size: 1rem;
+}
+.search form button {
+  padding: 0.7rem 2rem;
+  position: absolute;
+  background: purple;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  right: 0;
+  transition: opacity 0.3s ease-in;
+  font-size: 1rem;
+}
+.search form button span {
+  color: #fff;
+  font-weight: bold;
+}
+.search form button:active {
+  opacity: 0.8;
+}
+.statistics {
+  background: #fff;
+  width: 80%;
+  margin: 3rem auto;
+  padding: 1rem;
+  box-shadow: 0 0.2rem 0.3rem 0 #9f2b68;
+}
+.statistics h2 {
+  font-size: 1.3rem;
+}
+.searchresult {
+  width: 200px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.25s ease-in;
+}
+.searchresult:active {
+  transform: scale(0.5);
+}
+.searchresult h1 {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.btn {
+  width: 200px;
+  display: block;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  color: #fff;
+  font-weight: bold;
+  background: purple;
+  margin: -1rem auto 1rem;
+  transition: transform 0.25s ease-in;
+}
+.btn:active {
+  transform: scale(0.5);
+}
+.request {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  /* margin: 3rem auto;
+  align-items: center;
+  justify-content: center; */
+  /* gap: 1rem; */
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.request a {
+  font-size: 1rem;
+  color: purple;
+  font-weight: bold;
+  background: #ccc;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+.request hr {
+  color: red;
+}
+.ward .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media (max-width: 850px) {
+  .ward .stat {
+    /* justify-content: flex-start;
+    align-items: start;
+    margin: 0; */
+  }
+  .search {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+  .search form input {
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .search form button {
+    position: relative;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .request {
+    width: 90%;
+  }
+  .ward .stat {
+    width: 100%;
+    gap: 0;
+  }
+  .ward .stat a {
+    width: 40%;
+  }
+}

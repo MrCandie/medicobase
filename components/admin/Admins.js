@@ -51,14 +51,7 @@ export default function Admin() {
         <h1>Total Number of Patients in the database: </h1>
         <div className={classes.department}>
           <h1>Create A New Department Database</h1>
-          <Link
-            onClick={() => {
-              setShowDoctorDatabase((prevState) => !prevState);
-            }}
-            href=""
-          >
-            Doctors & Consultant Database
-          </Link>
+          <Link href="/doctor">Doctors & Consultant Database</Link>
           <Link href="/nurses">Nurses Database</Link>
           <Link
             onClick={() => {

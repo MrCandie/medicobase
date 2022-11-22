@@ -1,0 +1,71 @@
+.doctor {
+  width: 80%;
+  margin: 1rem auto;
+}
+.doctor h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.action {
+  margin: 3rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.action a {
+  width: 30%;
+  text-align: center;
+}
+.search {
+  width: 40%;
+  margin: auto;
+  display: flex;
+}
+.search form {
+  width: 100%;
+}
+.search input {
+  width: 70%;
+  padding: 1rem 0;
+  border: none;
+  background: #fff;
+  outline: none;
+  text-align: center;
+  font-size: 1rem;
+}
+.search button {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1rem;
+  background: purple;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media (max-width: 850px) {
+  .doctor {
+    width: 100%;
+  }
+  .action {
+    width: 90%;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.45rem;
+  }
+  .action a {
+    width: 40%;
+  }
+  .search {
+    width: 90%;
+    flex-direction: column;
+  }
+  .search input {
+    width: 100%;
+  }
+  .search button {
+    width: 100%;
+  }
+}

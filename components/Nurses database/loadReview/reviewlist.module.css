@@ -1,0 +1,42 @@
+.section {
+  width: 100%;
+  margin: 2rem 0;
+}
+.section ul {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.section ul li {
+  background: #fff;
+  padding: 1rem;
+  width: 25%;
+}
+.section ul li p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: purple;
+  font-size: 1rem;
+}
+.section ul li p span {
+  width: 60%;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.section button {
+  width: 30%;
+  margin: 1rem auto;
+  display: block;
+}
+@media (max-width: 850px) {
+  .section ul li {
+    width: 90%;
+    flex-direction: column;
+  }
+  .section ul li p span {
+    width: 55%;
+  }
+}

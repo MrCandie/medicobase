@@ -1,4 +1,4 @@
-import Ward from "../../components/ward/ward";
+import Ward from "../../components/Nurses database/ward/ward";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";

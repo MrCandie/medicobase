@@ -44,3 +44,9 @@ h4 {
 .btn:active {
   transform: scale(0.5);
 }
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

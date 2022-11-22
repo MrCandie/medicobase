@@ -1,5 +1,5 @@
 import React from "react";
-import Vitals from "../components/vitals/vitals";
+import Vitals from "../components/Nurses database/vitals/vitals";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";

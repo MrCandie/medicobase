@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <SessionProvider session={pageProps.session}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </SessionProvider>
     </Fragment>
   );

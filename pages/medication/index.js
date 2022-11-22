@@ -1,4 +1,4 @@
-import Medication from "../../components/medications/medication";
+import Medication from "../../components/Nurses database/medications/medication";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";

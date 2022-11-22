@@ -1,0 +1,63 @@
+.section {
+  width: 100%;
+}
+.req {
+  width: 30%;
+  background: #fff;
+  padding: 1rem;
+  /* margin: auto; */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.req h1 {
+  font-size: 1.3rem;
+  text-align: center;
+}
+.request {
+  margin: 0.7rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.request label {
+  font-size: 1rem;
+  color: purple;
+  font-weight: bold;
+}
+.request input,
+.request textarea {
+  padding: 0.7rem 0;
+  border: none;
+  border-bottom: 1px solid purple;
+  font-size: 1rem;
+  transition: all 0.25s ease-in;
+  outline: none;
+}
+.request select {
+  width: 50%;
+  padding: 0.7rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid purple;
+}
+.request input:focus,
+.request textarea:focus {
+  background: #ccc;
+}
+.action {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+.action button {
+  width: 30%;
+}
+@media (max-width: 850px) {
+  .req {
+    width: 80%;
+  }
+}

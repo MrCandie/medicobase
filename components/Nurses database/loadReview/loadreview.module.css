@@ -1,0 +1,45 @@
+.section {
+  width: 30%;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 1rem;
+}
+.section h1 {
+  font-size: 1.3rem;
+  text-align: center;
+}
+.form {
+  width: 100%;
+  display: flex;
+}
+.form input {
+  width: 90%;
+  padding: 0.7rem;
+  border: none;
+  background: #ccc;
+  text-align: center;
+  font-size: 1rem;
+  outline: none;
+}
+.form button {
+  padding: 0.7rem;
+  background: purple;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.action {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 850px) {
+  .section {
+    width: 90%;
+  }
+  .form {
+    width: 100%;
+  }
+}
