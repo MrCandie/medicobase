@@ -4,9 +4,12 @@ import classes from "./account.module.css";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import Spinner from "../../spinner/spinner";
+import Popup from "../../popup/popup";
 
 export default function Logins() {
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
   const router = useRouter();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -25,10 +28,29 @@ export default function Logins() {
     console.log(result);
     setLoading(false);
     if (result.error === null) {
-      alert("Sign in successful");
-      router.replace("/admin");
+      setMsg("Sign in successful");
+      setSuccess(true);
     }
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button
+            className="btn"
+            onClick={() => {
+              setSuccess(false);
+              router.replace("/admin");
+            }}
+          >
+            Continue
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section className={classes.signin}>

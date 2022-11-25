@@ -15,18 +15,28 @@ export default function DoctorPortal() {
   const [data, setData] = useState([]);
   const [prescription, setPrescription] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [patient, setPatient] = useState();
+  const [patientData, setPatientData] = useState();
   const [patientDetail, setPatientDetails] = useState(false);
+  const [showData, setShowData] = useState();
   const searchRef = useRef();
 
   const searchPatientHandler = async (e) => {
     e.preventDefault();
+    setShowData(true);
     setPatientDetails(true);
     const enteredSearch = searchRef.current.value;
     setLoading(true);
-    const patient = await getSearchedPatient(enteredSearch, setLoading);
-    setPatient(patient);
+    const response = await fetch("/api/patient");
+    const data = await response.json();
+    const searchedPt = data.message;
+
+    const patient = searchedPt.find((patient) => patient.name == enteredSearch);
+    setPatientData(patient);
+    setLoading(false);
+    searchRef.current.value = "";
   };
+
+  // console.log(patientData);
 
   const loadRequestHandler = () => {
     setShowRequest(true);
@@ -90,14 +100,10 @@ export default function DoctorPortal() {
         <RequestList setShowRequest={setShowRequest} data={data} />
       )}
       {prescription && <Prescription setPrescription={setPrescription} />}
-      {patientDetail && <PatientDetails patientData={patient} />}
-      {patientDetail && (
-        <div className="action">
-          <button onClick={() => setPatientDetails(false)} className="btn">
-            Close
-          </button>
-        </div>
+      {showData && (
+        <PatientDetails setShowData={setShowData} patientData={patientData} />
       )}
+
       {loading && <Spinner />}
     </Fragment>
   );

@@ -2,9 +2,12 @@ import { useRef, useState } from "react";
 import classes from "./vital.module.css";
 import Spinner from "../../spinner/spinner";
 import Overlay from "../../overlay/overlay";
+import Popup from "../../popup/popup";
 
 export default function VitalsForm({ setVitals }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
   const nameRef = useRef();
   const tempRef = useRef();
   const pulseRef = useRef();
@@ -55,10 +58,23 @@ export default function VitalsForm({ setVitals }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setIsLoading(false);
       });
   };
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button className="btn" onClick={() => setSuccess(false)}>
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
   return (
     <section className={classes.forms}>
       <Overlay />

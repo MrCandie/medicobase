@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import LoadPrescription from "./loadPrescription";
 import Spinner from "../../spinner/spinner";
+import Popup from "../../popup/popup";
 
 export default function Medication() {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function Medication() {
           </span>
         </div>
         <h1>Medications</h1>
+
         <div className={classes.actions}>
           <button
             onClick={() => setRecord((prevState) => !prevState)}

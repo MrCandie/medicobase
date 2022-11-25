@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import { Fragment, useRef, useState } from "react";
 import Spinner from "../../spinner/spinner";
 import classes from "./vital.module.css";
-import VitalDetails from "./VitalDetails";
+import Popup from "../../popup/popup";
 import VitalsForm from "./vitalsForm";
+import VitalDetails from "./VitalDetails";
 
 export default function Vitals() {
   const router = useRouter();
@@ -12,10 +13,12 @@ export default function Vitals() {
   const [patientVital, setPatientVital] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [vitalSigns, setVitalSigns] = useState([]);
+  const [showVitals, setShowVitals] = useState(false);
   const searchRef = useRef();
 
   const searchHandler = (e) => {
     e.preventDefault();
+    setShowVitals(true);
     const enteredSearchItem = searchRef.current.value;
     setIsLoading(true);
     fetch("/api/vitals")
@@ -25,15 +28,13 @@ export default function Vitals() {
         setIsLoading(false);
       });
 
-    console.log(patientVital);
-
     const filteredPatientVitals = patientVital.filter(
       (patient) => patient.name == enteredSearchItem
     );
 
     setVitalSigns(filteredPatientVitals);
-    console.log(vitalSigns);
   };
+
   return (
     <Fragment>
       <Head>
@@ -66,48 +67,9 @@ export default function Vitals() {
             Add New Vitals
           </button>
         </div>
-        <div className={classes.vitals}>
-          {vitalSigns.map((vital) => {
-            const date = new Date(vital.timeUploaded).toLocaleString("en-US");
-            console.log(date);
-            return (
-              <div className={classes.vital}>
-                <h1>
-                  Name: <span>{vital.name}</span>
-                </h1>{" "}
-                <hr />
-                <h1>
-                  Temperature: <span>{vital.temperature}deg</span>
-                </h1>
-                <hr />
-                <h1>
-                  Pulse: <span>{vital.pulse}b/m</span>
-                </h1>
-                <hr />
-                <h1>
-                  Respiration: <span>{vital.respiration}c/m</span>
-                </h1>
-                <hr />
-                <h1>
-                  Blood Pressure: <span>{vital.bloodPressure}mmHg</span>
-                </h1>
-                <hr />
-                <h1>
-                  Comments: <span>{vital.comment}</span>
-                </h1>
-                <hr />
-                <h1>
-                  Nurse Name:<span> {vital.nurseName}</span>
-                </h1>
-                <hr />
-                <h1>
-                  Time: <span>{date}</span>
-                </h1>
-                <hr />
-              </div>
-            );
-          })}
-        </div>
+        {showVitals && (
+          <VitalDetails setShowVitals={setShowVitals} vitalSigns={vitalSigns} />
+        )}
         {vitals && <VitalsForm setVitals={setVitals} />}
         {isLoading && <Spinner />}
       </section>

@@ -1,13 +1,23 @@
 import { Fragment, useState } from "react";
 import classes from "./patientDetails.module.css";
+import Popup from "../../popup/popup";
 
 export default function PatientDetails(props) {
   const [load, setLoad] = useState(false);
   const { patientData } = props;
-
-  // if (!patientData) {
-  //   return <p>Loading...</p>;
-  // }
+  console.log(patientData);
+  if (!patientData) {
+    return (
+      <Popup>
+        <p className="center">No patient found!!</p>
+        <div className="action">
+          <button onClick={() => props.setShowData(false)} className="btn">
+            Close
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section className={classes.details}>

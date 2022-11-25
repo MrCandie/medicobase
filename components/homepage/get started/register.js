@@ -3,11 +3,16 @@ import { Fragment, useRef, useState } from "react";
 import classes from "./account.module.css";
 import { signIn } from "next-auth/react";
 import Spinner from "../../spinner/spinner";
+import Popup from "../../popup/popup";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
+  const router = useRouter();
 
   const signupHandler = (e) => {
     e.preventDefault();
@@ -31,10 +36,30 @@ export default function Register() {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setLoading(false);
       });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button
+            className="btn"
+            onClick={() => {
+              setSuccess(false);
+              router.replace("/login");
+            }}
+          >
+            Continue
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section className={classes.signup}>

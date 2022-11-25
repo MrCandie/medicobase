@@ -1,0 +1,15 @@
+.main {
+  position: absolute;
+  background: #fff;
+  padding: 3rem;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.3rem;
+}
+@media (max-width: 850px) {
+  .main {
+    width: 60%;
+  }
+}

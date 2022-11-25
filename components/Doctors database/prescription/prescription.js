@@ -2,12 +2,15 @@ import { useRef, useState } from "react";
 import Overlay from "../../overlay/overlay";
 import Spinner from "../../spinner/spinner";
 import classes from "./prescription.module.css";
+import Popup from "../../popup/popup";
 
 export default function Prescription({ setPrescription }) {
   const nameRef = useRef();
   const doctorRef = useRef();
   const prescriptionRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
 
   const prescriptionHandler = (e) => {
     e.preventDefault();
@@ -36,10 +39,24 @@ export default function Prescription({ setPrescription }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setLoading(false);
       });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="success">{msg}</p>
+        <div className="action">
+          <button className="btn" onClick={() => setSuccess(false)}>
+            Okay
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section>

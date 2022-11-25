@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import classes from "./patientreview.module.css";
 import Spinner from "../../spinner/spinner";
 import Overlay from "../../overlay/overlay";
+import Popup from "../../popup/popup";
 
 export default function PatientReview({ setReview }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +11,8 @@ export default function PatientReview({ setReview }) {
   const findingsRef = useRef();
   const doctorRef = useRef();
   const changesRef = useRef();
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
 
   const reviewHandler = (e) => {
     e.preventDefault();
@@ -49,10 +52,24 @@ export default function PatientReview({ setReview }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setIsLoading(false);
       });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="success">{msg}</p>
+        <div className="action">
+          <button className="btn" onClick={() => setSuccess(false)}>
+            Okay
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section className={classes.section}>

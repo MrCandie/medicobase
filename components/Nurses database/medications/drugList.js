@@ -1,11 +1,13 @@
 import React, { use, useRef, useState } from "react";
 import classes from "./medication.module.css";
 import Spinner from "../../spinner/spinner";
-import { SP } from "next/dist/shared/lib/utils";
+import Popup from "../../popup/popup";
 import Overlay from "../../overlay/overlay";
 
 export default function DrugList(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState();
+  const [success, setSuccess] = useState();
   const nameRef = useRef();
   const doseRef = useRef();
   const patientRef = useRef();
@@ -38,10 +40,24 @@ export default function DrugList(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMessage(data.message);
+        setSuccess(true);
         setIsLoading(false);
       });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{message}</p>
+        <div className="action">
+          <button onClick={() => setSuccess(false)} className="btn">
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
   return (
     <section className={classes.body}>
       <Overlay />

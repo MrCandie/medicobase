@@ -2,9 +2,12 @@ import { useRef, useState } from "react";
 import classes from "./medication.module.css";
 import Spinner from "../../spinner/spinner";
 import Overlay from "../../overlay/overlay";
+import Popup from "../../popup/popup";
 
 export default function AddMedication(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState(false);
   const nameRef = useRef();
   const doseRef = useRef();
   const patientRef = useRef();
@@ -40,11 +43,24 @@ export default function AddMedication(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setIsLoading(false);
       });
   };
 
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button onClick={() => setSuccess(false)} className="btn">
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
   return (
     <div className={classes.body}>
       <Overlay />

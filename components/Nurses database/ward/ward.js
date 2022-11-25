@@ -24,6 +24,7 @@ export default function Ward() {
 
   const searchPatientHandler = async (e) => {
     e.preventDefault();
+    setShowData(true);
     setIsLoading(true);
     const enteredName = searchRef.current.value;
     const patient = await getSearchedPatient(enteredName, setIsLoading);
@@ -140,7 +141,9 @@ export default function Ward() {
           </Fragment>
         )}
         {review && <LoadReview />}
-        {showData && <PatientDetails patientData={patientData} />}
+        {showData && (
+          <PatientDetails setShowData={setShowData} patientData={patientData} />
+        )}
         {req && <DoctorRequest setReq={setReq} />}
         {showData && (
           <button onClick={closeSearchResult} className={classes.btn}>

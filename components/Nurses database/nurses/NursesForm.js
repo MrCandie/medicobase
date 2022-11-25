@@ -2,9 +2,12 @@ import { useRef, useState } from "react";
 import classes from "./nursesform.module.css";
 import Spinner from "../../spinner/spinner";
 import { useRouter } from "next/router";
+import Popup from "../../popup/popup";
 
 export default function NursesForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
   const wardNameRef = useRef();
   const numNursesOnDutyRef = useRef();
   const numNursesOnWardRef = useRef();
@@ -50,11 +53,26 @@ export default function NursesForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setIsLoading(false);
       });
     router.replace("/ward");
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="success">{msg}</p>
+        <div className="action">
+          <button className="btn" onClick={() => setSuccess(false)}>
+            Okay
+          </button>
+        </div>
+      </Popup>
+    );
+  }
+
   return (
     <div className={classes.container}>
       <h1>Ensure to fill in every details correctly1</h1>

@@ -40,6 +40,7 @@ export default async function handler(req, res) {
     }
 
     res.status(201).json({ message: "Sign Up Successful" });
+
     client.close();
   }
 }

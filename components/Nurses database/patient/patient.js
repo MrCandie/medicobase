@@ -2,6 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { Fragment, useRef, useState } from "react";
 import classes from "./patient.module.css";
+import Spinner from "../../spinner/spinner";
+import Popup from "../../popup/popup";
 
 export default function Patients() {
   const router = useRouter();
@@ -9,6 +11,9 @@ export default function Patients() {
   const [patientAssessment, setPatientAssessment] = useState(false);
   const [patientVitals, setPatientVitals] = useState(false);
   const [patientComplaint, setPatientComplaint] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const nameRef = useRef();
   const addressRef = useRef();
@@ -86,6 +91,7 @@ export default function Patients() {
       return;
     }
 
+    setLoading(true);
     fetch("/api/patient", {
       method: "POST",
       body: JSON.stringify({
@@ -118,8 +124,25 @@ export default function Patients() {
         console.log(res);
         return res.json();
       })
-      .then((data) => console.log(data));
+      .then((data) => {
+        setMsg(data.message);
+        setSuccess(true);
+        setLoading(false);
+      });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button onClick={() => setSuccess(false)} className="btn">
+            Close
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <Fragment>
@@ -270,6 +293,7 @@ export default function Patients() {
           </form>
         </div>
       </section>
+      {loading && <Spinner />}
     </Fragment>
   );
 }

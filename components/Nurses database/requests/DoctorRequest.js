@@ -2,12 +2,15 @@ import { useRef, useState } from "react";
 import Overlay from "../../overlay/overlay";
 import Spinner from "../../spinner/spinner";
 import classes from "./doctorrequest.module.css";
+import Popup from "../../popup/popup";
 
 export default function DoctorRequest({ setReq }) {
   const nameRef = useRef();
   const requestRef = useRef();
   const senderRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState();
+  const [success, setSuccess] = useState();
 
   const requestHandler = (e) => {
     e.preventDefault();
@@ -36,10 +39,24 @@ export default function DoctorRequest({ setReq }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        setMsg(data.message);
+        setSuccess(true);
         setLoading(false);
       });
   };
+
+  if (success) {
+    return (
+      <Popup>
+        <p className="center">{msg}</p>
+        <div className="action">
+          <button className="btn" onClick={() => setSuccess(false)}>
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   return (
     <section className={classes.section}>

@@ -1,6 +1,21 @@
+import { Fragment } from "react";
+import Popup from "../../popup/popup";
 import classes from "./medicationList.module.css";
 
 export default function PatientDrug({ drugs, setDrugList }) {
+  console.log(drugs);
+  if (drugs.length === 0) {
+    return (
+      <Popup>
+        <p className="center">No drug found</p>
+        <div className={classes.action}>
+          <button onClick={() => setDrugList(false)} className="btn">
+            Close
+          </button>
+        </div>
+      </Popup>
+    );
+  }
   return (
     <section className={classes.section}>
       <ul className={classes.drugs}>

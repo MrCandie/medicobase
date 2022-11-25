@@ -1,6 +1,20 @@
+import { Fragment } from "react";
 import classes from "./reviewlist.module.css";
+import Popup from "../../popup/popup";
 
 export default function ReviewList({ data, setReview }) {
+  if (data.length === 0) {
+    return (
+      <Popup>
+        <p className="center">No Reviews Found!...Try Later...</p>
+        <div className="action">
+          <button onClick={() => setReview(false)} className="btn">
+            Close
+          </button>
+        </div>
+      </Popup>
+    );
+  }
   return (
     <section className={classes.section}>
       <ul>
