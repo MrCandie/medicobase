@@ -54,7 +54,8 @@ export default function Logins() {
 
   return (
     <section className={classes.signin}>
-      <div className={classes.blur}></div>
+      <div className={classes.svg}></div>
+      <div className={classes.svg1}></div>
       <div className={classes.container}>
         <h1>Login Here</h1>
         <form onSubmit={loginHandler}>

@@ -1,14 +1,15 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useState } from "react";
 import classes from "./ward.module.css";
 import Link from "next/link";
 import Head from "next/head";
 import Spinner from "../../spinner/spinner";
-import { getPatientData, getSearchedPatient } from "../../../db-util";
 import PatientDetails from "../patient/PatientDetails";
 import { useRouter } from "next/router";
 import LoadReview from "../loadReview/LoadReview";
 import DoctorRequest from "../requests/DoctorRequest";
-import Overlay from "../../overlay/overlay";
+import WardRequest from "./wardRequest";
+import WardStat from "./WardStat";
+import PatientSearch from "./PatientSearch";
 
 export default function Ward() {
   const router = useRouter();
@@ -20,16 +21,6 @@ export default function Ward() {
   const [request, setrequest] = useState(false);
   const [review, setReview] = useState(false);
   const [req, setReq] = useState(false);
-  const searchRef = useRef();
-
-  const searchPatientHandler = async (e) => {
-    e.preventDefault();
-    setShowData(true);
-    setIsLoading(true);
-    const enteredName = searchRef.current.value;
-    const patient = await getSearchedPatient(enteredName, setIsLoading);
-    setPatientData(patient);
-  };
 
   const showStatsHandler = () => {
     setShowWardStat((prevState) => !prevState);
@@ -85,17 +76,11 @@ export default function Ward() {
             Doctor Reviews
           </Link>
         </div>
-        <div className={classes.search}>
-          <form onSubmit={searchPatientHandler}>
-            <input
-              id="search"
-              ref={searchRef}
-              type="search"
-              placeholder="Enter Patient Full Name"
-            />
-            <button>Search Patient</button>
-          </form>
-        </div>
+        <PatientSearch
+          setPatientData={setPatientData}
+          setIsLoading={setIsLoading}
+          setShowData={setShowData}
+        />
         {patientData && (
           <div
             onClick={() => setShowData(true)}
@@ -104,41 +89,9 @@ export default function Ward() {
             <h1>{patientData.name}</h1>
           </div>
         )}
-        {request && (
-          <div className="container">
-            <Overlay />
-            <div className={classes.request}>
-              <Link onClick={() => setReq(true)} href="">
-                Doctor
-              </Link>
-              <hr />
-              <Link href="">Pharmacy</Link>
-              <hr />
-              <Link href="">Laboratory</Link>
-              <hr />
-              <Link href="">Radiology</Link>
-              <button onClick={() => setrequest(false)} className="btn">
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
+        {request && <WardRequest setrequest={setrequest} setReq={setReq} />}
         {showWardStat && (
-          <Fragment>
-            {wardStat.map((ward) => (
-              <div className={classes.statistics}>
-                <h2>Ward Statistics</h2>
-                <h1>Ward Name: {ward.wardName}</h1>
-                <hr />
-                <h1>Number of Nurses on ward: {ward.numNursesWard}</h1> <hr />
-                <h1>Number of nurses on duty: {ward.numNursesDuty}</h1> <hr />
-                <h1>Names of nurses on ward: {ward.nursesName}</h1> <hr />
-                <h1>Number of patients on admission: {ward.numPatient}</h1>{" "}
-                <hr />
-                <h1>Senior Nurse on duty: {ward.snrNurse}</h1> <hr />
-              </div>
-            ))}
-          </Fragment>
+          <WardStat setShowWardStat={setShowWardStat} wardStat={wardStat} />
         )}
         {review && <LoadReview />}
         {showData && (

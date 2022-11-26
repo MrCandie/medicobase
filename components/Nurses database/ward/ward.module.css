@@ -47,7 +47,7 @@
   border: none;
   outline: none;
   width: 90%;
-  background: #fff;
+  background: #ccc;
   text-align: center;
   font-size: 1rem;
 }
@@ -70,7 +70,7 @@
   opacity: 0.8;
 }
 .statistics {
-  background: #fff;
+  background: #000;
   width: 80%;
   margin: 3rem auto;
   padding: 1rem;

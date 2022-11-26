@@ -2,12 +2,14 @@ import React, { Fragment, useRef, useState } from "react";
 import classes from "./medication.module.css";
 import MedicationList from "./medicationList";
 import Spinner from "../../spinner/spinner";
+import Popup from "../../popup/popup";
 
 export default function GetMedication() {
   const [isLoading, setIsLoading] = useState(false);
   const [patientDrug, setPatientDrug] = useState([]);
   const [drug, setDrug] = useState([]);
   const [drugList, setDrugList] = useState(false);
+
   const searchRef = useRef();
 
   const searchHandler = (e) => {
@@ -20,8 +22,13 @@ export default function GetMedication() {
     }
 
     setIsLoading(true);
-    fetch("/api/medication")
-      .then((res) => res.json())
+    fetch("/api/medications")
+      .then((res) => {
+        if (!res.ok) {
+          setIsLoading(false);
+        }
+        return res.json();
+      })
       .then((data) => {
         setPatientDrug(data.message);
         setIsLoading(false);

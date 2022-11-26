@@ -31,6 +31,7 @@ export default function GetPatient() {
         setDrug(filteredDrug);
         setLoading(false);
       });
+    searchRef.current.value = "";
   };
   return (
     <div>

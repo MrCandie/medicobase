@@ -12,6 +12,7 @@
   width: 25%;
   background: #fff;
   padding: 1rem;
+  box-shadow: 0 0.2rem 0.7rem 0 #ccc;
 }
 .section ul li p {
   display: flex;

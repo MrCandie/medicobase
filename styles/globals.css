@@ -2,7 +2,7 @@
 
 html,
 body {
-  background: #ccc;
+  background: #fff;
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
@@ -31,7 +31,7 @@ h4 {
   font-size: 1rem;
 }
 .btn {
-  padding: 1rem 1.3rem;
+  padding: 0.7rem 1.3rem;
   border: none;
   color: #fff;
   font-weight: bold;
@@ -60,4 +60,8 @@ h4 {
   font-weight: bold;
   text-align: center;
   font-size: 1rem;
+}
+.error {
+  color: red;
+  text-align: center;
 }

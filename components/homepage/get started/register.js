@@ -63,7 +63,8 @@ export default function Register() {
 
   return (
     <section className={classes.signup}>
-      <div className={classes.blur}></div>
+      <div className={classes.svg}></div>
+      <div className={classes.svg1}></div>
       <div className={classes.container}>
         <h1>Get Started</h1>
         <form onSubmit={signupHandler}>

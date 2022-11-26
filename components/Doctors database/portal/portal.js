@@ -81,30 +81,30 @@ export default function DoctorPortal() {
             Search <br /> Patient
           </Link>
         </div>
-      </section>
-      {showForm && (
-        <div className={classes.search}>
-          <form onSubmit={searchPatientHandler}>
-            <input
-              id="search"
-              ref={searchRef}
-              type="search"
-              placeholder="Enter Patient Full Name"
-            />
-            <button>Search Patient</button>
-          </form>
-        </div>
-      )}
-      {review && <PatientReview setReview={setReview} />}
-      {showRequest && (
-        <RequestList setShowRequest={setShowRequest} data={data} />
-      )}
-      {prescription && <Prescription setPrescription={setPrescription} />}
-      {showData && (
-        <PatientDetails setShowData={setShowData} patientData={patientData} />
-      )}
+        {showForm && (
+          <div className={classes.search}>
+            <form onSubmit={searchPatientHandler}>
+              <input
+                id="search"
+                ref={searchRef}
+                type="search"
+                placeholder="Enter Patient Full Name"
+              />
+              <button>Search Patient</button>
+            </form>
+          </div>
+        )}
+        {review && <PatientReview setReview={setReview} />}
+        {showRequest && (
+          <RequestList setShowRequest={setShowRequest} data={data} />
+        )}
+        {prescription && <Prescription setPrescription={setPrescription} />}
+        {showData && (
+          <PatientDetails setShowData={setShowData} patientData={patientData} />
+        )}
 
-      {loading && <Spinner />}
+        {loading && <Spinner />}
+      </section>
     </Fragment>
   );
 }

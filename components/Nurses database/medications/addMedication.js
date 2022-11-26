@@ -8,6 +8,9 @@ export default function AddMedication(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState();
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState();
+  const [errorMsg, setErrorMsg] = useState();
+
   const nameRef = useRef();
   const doseRef = useRef();
   const patientRef = useRef();
@@ -41,13 +44,34 @@ export default function AddMedication(props) {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          setError(true);
+          setErrorMsg("Something went wrong... Try Later");
+          setIsLoading(false);
+          return;
+        }
+        return res.json();
+      })
       .then((data) => {
         setMsg(data.message);
         setSuccess(true);
         setIsLoading(false);
       });
   };
+
+  if (error) {
+    return (
+      <Popup>
+        <p className="error">{errorMsg}</p>
+        <div className="action">
+          <button onClick={() => setError(false)} className="btn">
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   if (success) {
     return (

@@ -6,8 +6,11 @@ import Overlay from "../../overlay/overlay";
 
 export default function DrugList(props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("");
   const [success, setSuccess] = useState();
+  const [error, setError] = useState();
+  const [errorMsg, setErrorMsg] = useState();
+
   const nameRef = useRef();
   const doseRef = useRef();
   const patientRef = useRef();
@@ -22,6 +25,15 @@ export default function DrugList(props) {
     const enteredRoute = routeRef.current.value;
     const enteredTime = timeRef.current.value;
 
+    if (
+      !enteredDose ||
+      !enteredName ||
+      !enteredPatient ||
+      !enteredRoute ||
+      !enteredTime
+    ) {
+      return;
+    }
     const drugData = {
       name: enteredName,
       dose: enteredDose,
@@ -38,13 +50,34 @@ export default function DrugList(props) {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          setError(true);
+          setErrorMsg("Something went wrong... Try Later");
+          setIsLoading(false);
+          return;
+        }
+        return res.json();
+      })
       .then((data) => {
         setMessage(data.message);
         setSuccess(true);
         setIsLoading(false);
       });
   };
+
+  if (error) {
+    return (
+      <Popup>
+        <p className="error">{errorMsg}</p>
+        <div className="action">
+          <button onClick={() => setError(false)} className="btn">
+            Okay!
+          </button>
+        </div>
+      </Popup>
+    );
+  }
 
   if (success) {
     return (
@@ -83,7 +116,7 @@ export default function DrugList(props) {
             <input ref={routeRef} id="name" type="text" />
           </div>
           <div className={classes.drug}>
-            <label htmlFor="name">Time</label>
+            <label htmlFor="name">Time Of Administration</label>
             <input ref={timeRef} id="name" type="text" />
           </div>
           <div className={classes.action}>
