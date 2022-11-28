@@ -1,6 +1,11 @@
 .eye {
   position: absolute;
-  right: 13%;
+  right: 12%;
   top: 62%;
   cursor: pointer;
+}
+@media (max-width: 600px) {
+  .eye {
+    right: 15%;
+  }
 }
