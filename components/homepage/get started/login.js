@@ -5,8 +5,11 @@ import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import Spinner from "../../spinner/spinner";
 import Popup from "../../popup/popup";
+import EyeIcon from "../../ui/EyeIcon";
 
 export default function Logins() {
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(true);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState();
   const [success, setSuccess] = useState();
@@ -52,6 +55,16 @@ export default function Logins() {
     );
   }
 
+  function toggleHandler() {
+    if (type === "password") {
+      setType("text");
+      setIcon(false);
+    } else {
+      setType("password");
+      setIcon(true);
+    }
+  }
+
   return (
     <section className={classes.signin}>
       <div className={classes.svg}></div>
@@ -65,7 +78,8 @@ export default function Logins() {
           </div>
           <div className={classes.register}>
             <label htmlFor="password">Enter Password</label>
-            <input ref={passwordRef} required id="password" type="password" />
+            <input ref={passwordRef} required id="password" type={type} />
+            <EyeIcon icon={icon} toggleHandler={toggleHandler} />
           </div>
           <button className={classes.btn}>Login</button>
           <p>

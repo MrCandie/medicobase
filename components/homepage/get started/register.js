@@ -5,8 +5,11 @@ import { signIn } from "next-auth/react";
 import Spinner from "../../spinner/spinner";
 import Popup from "../../popup/popup";
 import { useRouter } from "next/router";
+import EyeIcon from "../../ui/EyeIcon";
 
 export default function Register() {
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(true);
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -61,6 +64,16 @@ export default function Register() {
     );
   }
 
+  function toggleHandler() {
+    if (type === "password") {
+      setType("text");
+      setIcon(false);
+    } else {
+      setType("password");
+      setIcon(true);
+    }
+  }
+
   return (
     <section className={classes.signup}>
       <div className={classes.svg}></div>
@@ -75,7 +88,8 @@ export default function Register() {
             </div>
             <div className={classes.register}>
               <label htmlFor="password">Enter Password</label>
-              <input ref={passwordRef} required id="password" type="password" />
+              <input ref={passwordRef} required id="password" type={type} />
+              <EyeIcon icon={icon} toggleHandler={toggleHandler} />
             </div>
             <button className={classes.btn}>Register</button>
             <p>
